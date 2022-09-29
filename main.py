@@ -13,10 +13,24 @@ jouer = True
 while jouer:
     nombre_trouve = False
     essais = 0
-    nombre = random.randint(0, 1000)
+
+    nombre_min_string = input('Nombre minimum (0 par défaut) :\t')
+    if nombre_min_string == '':
+        nombre_min = 0
+    else:
+        nombre_min = int(nombre_min_string)
+
+    nombre_max_string = input('Nombre maximum (100 par défaut) :\t')
+    if nombre_max_string == '':
+        nombre_max = 100
+    else:
+        nombre_max = int(nombre_max_string)
+
+    nombre = random.randint(nombre_min, nombre_max)
+
     while not nombre_trouve:
         essais += 1
-        nombre_utilisateur = int(input("Nombre entre 0 et 1000 :\t"))
+        nombre_utilisateur = int(input(f"Nombre entre {nombre_min} et {nombre_max} :\t"))
 
         if nombre > nombre_utilisateur:
             print("Le nombre est plus grand.")
