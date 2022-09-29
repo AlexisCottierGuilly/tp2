@@ -8,12 +8,12 @@ aléatoirement. L'utilisateur a le choix de rejouer.
 
 import random
 
-jouer = True
 
-while jouer:
-    nombre_trouve = False
-    essais = 0
-
+def choix_bornes():
+    """
+    Demande à l'utilisateur les bornes minimales et maximales (0, 100 par défaut)
+    :return: bornes
+    """
     nombre_min_string = input('Nombre minimum (0 par défaut) :\t')
     if nombre_min_string == '':
         nombre_min = 0
@@ -26,6 +26,16 @@ while jouer:
     else:
         nombre_max = int(nombre_max_string)
 
+    return nombre_min, nombre_max
+
+
+jouer = True
+
+while jouer:
+    nombre_trouve = False
+    essais = 0
+
+    nombre_min, nombre_max = choix_bornes()
     nombre = random.randint(nombre_min, nombre_max)
 
     while not nombre_trouve:
